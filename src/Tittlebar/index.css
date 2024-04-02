@@ -1,0 +1,33 @@
+.titlebar {
+    height: 26px;
+    background-color: var(--first-color);
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: var(--border) var(--border) 0px 0px;
+}
+.tittlebar-settings {
+    position: fixed;
+    left: 0;
+    width: 26px;
+    height: 26px;
+}
+.titlebar-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+}
+.titlebar-button:nth-child(1) {
+    background-color: red;
+}
+.titlebar-button:nth-child(3):hover {
+    border-top-right-radius: var(--border);
+}
+.titlebar-button:hover {
+    background: #8d8d8d;
+}
