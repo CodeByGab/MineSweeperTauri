@@ -14,8 +14,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
+  --title-size: 30px;
   --border: 10px;
-  --first-color: #ad7bdb;
+  --first-color: #ad7bdba0;
 }
 
 * {

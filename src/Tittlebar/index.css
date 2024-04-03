@@ -1,33 +1,59 @@
 .titlebar {
-    height: 26px;
-    background-color: var(--first-color);
+    /* height: var(--title-size); */
     display: flex;
     justify-content: flex-end;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    border-radius: var(--border) var(--border) 0px 0px;
+    background-color: #1e1f22;
+    /* border-radius: var(--border) var(--border) 0px 0px; */
 }
-.tittlebar-settings {
+.titlebar-settings {
     position: fixed;
     left: 0;
-    width: 26px;
-    height: 26px;
+    width: 20px;
+    height: 20px;
+    margin-block: 10px;
+    margin-inline: 6px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+.titlebar-settings svg {
+    border-radius: 100%;
+    color: #f0f0f0;
+}
+.titlebar-settings svg:hover {
+    background-color: red;
 }
 .titlebar-button {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 26px;
-    height: 26px;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    margin-block: 10px;
+    margin-inline: 6px;
+    cursor: pointer;
 }
-.titlebar-button:nth-child(1) {
-    background-color: red;
+.titlebar-button:nth-child(2) {
+    border: 1px solid #de9f34;
+    background-color: #fdbc40;
+    color: 	#fdbc40;
+}
+.titlebar-button:nth-child(3) {
+    border: 1px solid #df4744;
+    background-color: #fc5753;
+    color: #fc5753;
+    margin-right: 12px;
+}
+/* .titlebar-button:nth-child(3):hover {
+    border-top-right-radius: var(--border);
+} */
+.titlebar-button:nth-child(2):hover {
+   color: #985712;
 }
 .titlebar-button:nth-child(3):hover {
-    border-top-right-radius: var(--border);
-}
-.titlebar-button:hover {
-    background: #8d8d8d;
+    color: #7e0508;
 }
