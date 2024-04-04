@@ -23,9 +23,16 @@ const flagSvg = (
 
 function MainCointainer() {
 
-  const [bombsLeft, setBombsLeft] = useState<number>(10);
+  //* 9 x 9 = 81 squares, 12.3% bomb
+
+  const rowsNum: number = 9;
+  const colsNum: number = 9;
+  const mineNum: number = 10;
+
+  const [bombsLeft, setBombsLeft] = useState<number>(mineNum);
   const [board, setBoard] = useState<boardType[][]>([]);
   const [timer, setTimer] = useState<number>(0);
+  const [gameOver, setGameOver] = useState<boolean>(false);
 
   useEffect(() => {
     if (!(timer === 999)) {
@@ -35,12 +42,6 @@ function MainCointainer() {
       return () => clearTimeout(timerId);
     }
   }, [timer]);
-
-  //* 9 x 9 = 81 squares, 12.3% bomb
-
-  const rowsNum: number = 9;
-  const colsNum: number = 9;
-  const mineNum: number = 10;
 
   interface boardType {
     isMine: boolean,
@@ -108,6 +109,9 @@ function MainCointainer() {
       updatedBoard[row][col].revealed = true;
       setBoard(updatedBoard);
     }
+    if(board[row][col].isMine) {
+      setGameOver(true);
+    }
   }
 
   function handleRightCellClick(e: React.MouseEvent,row: number, col: number) {
@@ -127,7 +131,7 @@ function MainCointainer() {
     }
   }
 
-  function renderBoard(board: boardType[][]) {
+  function renderBoard(board: boardType[][], gameOver: boolean) {
 
     return (
       <div className="grid">
@@ -141,12 +145,29 @@ function MainCointainer() {
                 onContextMenu={(e) => handleRightCellClick(e, rowIndex, colIndex)}
                 id={square.count > 0 ? `count-${square.count}` : ''}
               >
-                {square.revealed ? 
-                  (square.isMine ? bombSvg : 
-                    (square.count > 0 ? 
-                      square.count
-                       : '')) : 
-                    (square.flag ? flagSvg : '')
+                {
+                  !gameOver ?
+                    square.revealed ? //if
+                      (square.isMine ? //if
+                        bombSvg 
+                      : //else 
+                        (square.count > 0 ? //if
+                          square.count
+                        : //else
+                        '')) 
+                    : //else
+                      (square.flag ? flagSvg : '')
+                  : 
+                    square.isMine ? //if
+                        bombSvg 
+                      : //else 
+                        (square.revealed ? 
+                          square.count > 0 ? //if
+                             square.count
+                          : //else
+                            ''
+                        : '')
+                        
                 }
               </div>
             ))}
@@ -156,17 +177,27 @@ function MainCointainer() {
     );
   }
 
-  useEffect(() => {
+  function startGame(): void {
+    setGameOver(false);
+    setTimer(0);
     const newBoard = createBoard(rowsNum, colsNum);
     placeMine(rowsNum, colsNum, mineNum, newBoard);
     calculateMines(rowsNum, colsNum, newBoard);
     setBoard(newBoard);
+  }
+
+  function resetGame(): void {
+    startGame();
+  }
+
+  useEffect(() => {
+    startGame();
   }, []);
 
   return (
     <div className="main-container">
-      <TopBar mines={bombsLeft} timer={timer} />
-      {renderBoard(board)}
+      <TopBar mines={bombsLeft} resetGame={resetGame} timer={timer} />
+      {renderBoard(board, gameOver)}
     </div>
   )
 }

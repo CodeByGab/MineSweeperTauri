@@ -20,6 +20,8 @@ pnpm tauri dev
 [X] Put conts <br>
 [X] Put flags <br>
 [X] Timer <br>
-[] Reset game <br>
-[] GameOver Screen <br>
+[] Reveal cells arround<br>
+[X] Reset game <br>
+[X] GameOver Bombs <br>
+[] GameOver Modal <br>
 [] Settings Modal <br>
