@@ -6,7 +6,7 @@
   line-height: 24px;
   font-weight: 400;
 
-  color: #0f0f0f;
+  color: rgb(240, 240, 240);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,8 +15,7 @@
   -webkit-text-size-adjust: 100%;
 
   --title-size: 30px;
-  --border: 10px;
-  --first-color: #ad7bdba0;
+  --primary-color: #CE4D73;
 }
 
 * {

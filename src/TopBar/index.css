@@ -1,0 +1,38 @@
+.top-bar {
+    background-color: #0a0a0a66;
+    /* background-color: #090909; */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+}
+.flag {
+    display: flex;
+    margin-left: 14px;
+    width: 90px;
+}
+.flag svg {
+    width: 30px;
+}
+.flag span {
+    display: flex;
+    text-align: center;
+    margin-left: 8px;
+}
+.emoji svg{
+    width: 30px;
+}
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 12px;
+    width: 90px;
+}
+.timer svg {
+    width: 30px;
+}
+.timer span {
+    margin-right: 8px;
+}

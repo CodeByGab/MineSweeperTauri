@@ -1,6 +1,6 @@
 .container {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0);
-  border-radius: var(--border);
+  background-color: #67676766;
+  /* background-color: transparent; */
 }

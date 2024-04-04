@@ -1,5 +1,108 @@
 .main-container {
     position: fixed;
     top: calc(7px + var(--title-size));
-    background-color: red;
+    width: 100vw;
+    /* height: calc(100vh - (0px - var(--title-size))); */
 }
+.grid {
+    width: 400px;
+    height: 412px;
+    margin: 0 auto;
+    display: flex;
+    padding: auto;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: #36363699;
+    gap: 2px;
+}
+.row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.square {
+    border: 1px solid white;
+    border-radius: 4px;
+    display: flex;
+    width: 36px;
+    height: 36px;
+    background-color: #45454599;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.1s;
+}
+.square:active {
+    background-color: #060606cc;
+}
+.square.flag-sqr {
+    color: var(--primary-color);
+}
+/* .square.flag-sqr:hover {
+    filter: drop-shadow(0px 0px 1px var(--primary-color));
+} */
+.square.flag-sqr:before {
+    content: '';
+    margin-top: 32px;
+    position: fixed;
+    width: 30px;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scale(0);
+    transition: transform filter .2s;
+}
+.square.flag-sqr:hover:before {
+    filter: blur(2px);
+    transform: scale(1);
+}
+.square.flag-sqr:after {
+    content: '';
+    margin-top: 34px;
+    position: fixed;
+    width: 30px;
+    height: 2px;
+    transform: scale(0);
+    background-color: var(--primary-color);
+    transition: transform .2s;
+}
+.square.flag-sqr:hover:after {
+    transform: scale(1);
+}
+/* .square.flag-sqr:before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+
+    -webkit-mask: url('../assets/flag.svg');
+    -webkit-mask-size: cover;
+    mask: url('../assets/flag.svg');
+    mask-size: cover;
+    background-color: var(--primary-color);
+} */
+
+.square.flag-sqr:active {
+    background-color: #45454599;
+}
+.square.revealed {
+    background-color: #15151599;
+}
+.square svg {
+    width: 30px;
+    height: 30px;
+}
+/* .square::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 0, 0, 0);
+    border-radius: 100%;
+    filter: blur(6px);
+    transition: background-color 0.3s;
+}
+.square:hover::after {
+    background-color: rgb(255, 0, 0);
+} */
